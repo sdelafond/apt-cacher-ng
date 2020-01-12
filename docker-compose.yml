@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  cacher:
+    build:
+      context: .
+    restart: always
+    volumes:
+      - /tank/mirror/debian:/var/cache/apt-cacher-ng
+    ports:
+      - "3142:3142"
