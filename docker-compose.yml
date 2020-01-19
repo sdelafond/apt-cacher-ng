@@ -7,5 +7,7 @@ services:
     restart: always
     volumes:
       - /tank/mirror/debian:/var/cache/apt-cacher-ng
+    extra_hosts:
+        - "package-server:10.112.11.105"
     ports:
       - "3142:3142"
