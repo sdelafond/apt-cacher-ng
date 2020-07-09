@@ -18,14 +18,12 @@ RUN apt install -y wget
 RUN apt install -y apt-cacher-ng
 
 RUN echo "PassThroughPattern: .*" >> /etc/apt-cacher-ng/acng.conf
-RUN echo "ForeGround: 1" >> /etc/apt-cacher-ng/acng.conf
 RUN echo "VerboseLog: 1" >> /etc/apt-cacher-ng/acng.conf
 
-# for ubuntu
-#RUN echo "distinct_namespaces = 1" >> /etc/apt-cacher-ng/acng.conf
+COPY entrypoint.sh /
 
 VOLUME /var/cache/apt-cacher-ng
 
 EXPOSE 3142
 
-ENTRYPOINT /usr/sbin/apt-cacher-ng
+ENTRYPOINT /entrypoint.sh
